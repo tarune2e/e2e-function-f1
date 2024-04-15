@@ -23,22 +23,22 @@ jobs:
         pip3 install e2e-cli
     
     - name: Execute Interactive Command
-  env:
-    APIKEY: ${{ secrets.E2E_API_KEY }}
-    AUTHTOKEN: ${{ secrets.E2E_AUTH_TOKEN }}
-  run: |
-    echo "Starting Interactive Command"
-    # Replace 'your_command' with the actual command that requires input
-    # You may need to adjust this command to match your specific use case
-    expect -c '
-        spawn e2e_cli alias add
-        expect "Enter your api key:" 
-        send "$env(APIKEY)\r"
-        expect "Enter your auth token:"
-        send "$env(AUTHTOKEN)\r"
-        expect "Input name of alias you want to add :"
-        send "e2ecreds\r"
-        interact'
+      env:
+        APIKEY: ${{ secrets.E2E_API_KEY }}
+        AUTHTOKEN: ${{ secrets.E2E_AUTH_TOKEN }}
+      run: |
+        echo "Starting Interactive Command"
+        # Replace 'your_command' with the actual command that requires input
+        # You may need to adjust this command to match your specific use case
+        expect -c '
+            spawn e2e_cli alias add
+            expect "Enter your api key:" 
+            send "$env(APIKEY)\r"
+            expect "Enter your auth token:"
+            send "$env(AUTHTOKEN)\r"
+            expect "Input name of alias you want to add :"
+            send "e2ecreds\r"
+            interact'
     
     # - name: List changed folders
     #   run: |
