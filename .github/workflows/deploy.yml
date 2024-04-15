@@ -28,7 +28,7 @@ jobs:
         AUTHTOKEN: ${{ secrets.E2E_AUTH_TOKEN }}
       run: |
         echo "Starting Interactive Command"
-        # Replace 'your_command' with the actual command that requires input
+        # Replace 'your_command_let' with the actual command that requires input
         # You may need to adjust this command to match your specific use case
         expect -c '
             spawn e2e_cli alias add
