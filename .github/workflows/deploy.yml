@@ -1,0 +1,62 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Python and pip
+      run: |
+        sudo apt update
+        sudo apt install python3 python3-pip -y
+
+    - name: Install e2e CLI
+      run: |
+        pip3 install e2e-cli
+    
+    - name: Execute Interactive Command
+      env:
+        APIKEY: ${{ secrets.E2E_API_KEY }}
+        AUTHTOKEN: ${{ secrets.E2E_AUTH_TOKEN }}
+      run: |
+        echo "Starting Interactive Command"
+        # Replace 'your_command' with the actual command that requires input
+        # Replace 'your_input' with the input you want to provide
+        # You may need to adjust this command to match your specific use case
+        expect -c '
+            e2e_cli alias add
+            expect "Enter your api key:" 
+            send $APIKEY
+            send "\r"
+            expect "Enter your auth token:"
+            send $AUTHTOKEN
+            send "\r"
+            expect "Input name of alias you want to add :"
+            send "e2ecreds\r"
+            interact
+    
+    # - name: List changed folders
+    #   run: |
+    #     export CHANGED_FOLDERS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} \
+    #     | cut -d/ -f1 \
+    #     | sort \
+    #     | uniq)
+    #     echo "::set-env name=CHANGED_FOLDERS::$CHANGED_FOLDERS"
+      
+    # - name: Loop over changed folders
+    #   run: |
+    #     for folder in $CHANGED_FOLDERS; do
+    #       echo "Processing folder: $folder"
+    #       e2e_cli faas deploy --name
+    #     done
+
+    - name: Deploy
+      run: e2e_cli faas --name="e2e-function-py-f1" --lang="python" deploy --mem=128 --timeout=30
