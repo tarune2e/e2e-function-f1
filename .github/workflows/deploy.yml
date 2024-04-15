@@ -40,6 +40,22 @@ jobs:
             expect "Input name of alias you want to add :"
             send "e2ecreds\r"
             interact'
+
+    - name: Capture Faas list Output
+      id: capture_output_faas_list
+      run: |
+        echo "Running a command..."
+        # Replace 'your_command' with the actual command you want to run
+        output=$(e2e_cli faas list)
+        echo "::set-output name=command_output::$output"
+    
+    - name: Capture Alias Output
+      id: capture_output_alias_view
+      run: |
+        echo "Running a command..."
+        # Replace 'your_command' with the actual command you want to run
+        output=$(e2e_cli alias view)
+        echo "::set-output name=command_output::$output"
     
     # - name: List changed folders
     #   run: |
