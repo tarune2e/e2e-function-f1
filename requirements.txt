@@ -1,0 +1,5 @@
+###### Requirements without Version Specifiers ######
+#beautifulsoup4
+
+###### Requirements with Version Specifiers ######
+#docopt == 0.6.1
