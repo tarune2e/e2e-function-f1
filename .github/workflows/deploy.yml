@@ -21,7 +21,7 @@ jobs:
 
     - name: Install e2e CLI
       run: |
-        pip3 install e2e-cli
+        python3 -m pip install e2e-cli
     
     - name: Check api and auth token
       run: |
