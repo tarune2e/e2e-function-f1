@@ -58,7 +58,7 @@ jobs:
             send "e2ecreds\r"
             expect eof
             exit [wait]
-        ' | tee output.log
+        '
 
 
     - name: Default Alias Set
@@ -72,7 +72,9 @@ jobs:
             send "e2ecreds\r"
             expect "are you sure you want to proceed (y/n):"
             send "y\r"
-            interact'
+            expect eof
+            exit [wait]
+        '
     # - name: Capture Faas list Output
     #   id: capture_output_faas_list
     #   run: |
