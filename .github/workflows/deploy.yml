@@ -41,6 +41,18 @@ jobs:
             send "e2ecreds\r"
             interact'
 
+    - name: Default Alias Set
+      run: |
+      echo "Starting Interactive Command"
+        # Replace 'your_command_let' with the actual command that requires input
+        # You may need to adjust this command to match your specific use case
+        expect -c '
+            spawn e2e_cli alias set
+            expect "Enter name of the alias you want to set as default :" 
+            send "e2ecreds\r"
+            expect "are you sure you want to proceed (y/n):"
+            send "y\r"
+            interact'
     # - name: Capture Faas list Output
     #   id: capture_output_faas_list
     #   run: |
@@ -85,4 +97,4 @@ jobs:
     #     done
 
     - name: Deploy
-      run: e2e_cli faas --name="e2e-function-py-f1" --lang="python" deploy --mem=128 --timeout=30
+      run: e2e_cli faas --name="e2e-function-py-f1" --lang="python" redeploy 
