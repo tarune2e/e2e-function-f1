@@ -18,6 +18,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install Python dependencies
       run: |
+        rm Pipfile
         python -m pip install --upgrade pipenv
         pipenv sync --dev
 
