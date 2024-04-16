@@ -21,7 +21,7 @@ jobs:
 
     - name: Install e2e CLI
       run: |
-        cd /
+        cd /home/runner/
         python -m pip install --upgrade pip
         pip install e2e-cli
     
@@ -36,6 +36,7 @@ jobs:
         AUTHTOKEN: ${{ secrets.E2E_AUTH_TOKEN }}
       run: |
         echo "Starting Interactive Command"
+        cd /home/runner/
         # Replace 'your_command_let' with the actual command that requires input
         # You may need to adjust this command to match your specific use case
         expect -c '
@@ -51,6 +52,7 @@ jobs:
     - name: Default Alias Set
       run: |
         echo "Starting Interactive Command alias"
+        cd /home/runner/
         # Replace 'your_command_let' with the actual command that requires input
         # You may need to adjust this command to match your specific use case
         expect -c '
@@ -79,12 +81,14 @@ jobs:
     - name: Capture Faas list Output
       id: capture_output_faas_list
       run: |
+        cd /home/runner/
         echo "Running a faas list command..."
         e2e_cli faas list
     
     - name: Capture Alias Output
       id: capture_output_alias_view
       run: |
+        cd /home/runner/
         echo "Running a alias view command..."
         e2e_cli alias view
     
