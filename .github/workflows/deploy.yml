@@ -42,9 +42,9 @@ jobs:
         expect -c '
             spawn e2e_cli alias add
             expect "Enter your api key:" 
-            send "$env(APIKEY)\r"
+            send "51f04644-95c2-4836-a550-61cab7013c73\r"
             expect "Enter your auth token:"
-            send "$env(AUTHTOKEN)\r"
+            send "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJGSjg2R2NGM2pUYk5MT2NvNE52WmtVQ0lVbWZZQ3FvcXRPUWVNZmJoTmxFIn0.eyJleHAiOjE3MzU3MDQ4NDcsImlhdCI6MTcwNDE2ODg0NywianRpIjoiNjE3Nzg2ZTAtZDg0Yy00NjFhLTg4ZjctY2QzYjk4MDFiZmNiIiwiaXNzIjoiaHR0cDovL2dhdGV3YXkuZTJlbmV0d29ya3MuY29tL2F1dGgvcmVhbG1zL2FwaW1hbiIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI2ODM3YTA1YS01M2EyLTQwOGQtYjViMS1mZTI4YjJhNmQxMjAiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhcGltYW51aSIsInNlc3Npb25fc3RhdGUiOiJiMDAzM2JlYS1mY2RhLTQ2NDAtODRhZC00MDc0NDdjZmJhM2MiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImFwaXVzZXIiLCJkZWZhdWx0LXJvbGVzLWFwaW1hbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6ImIwMDMzYmVhLWZjZGEtNDY0MC04NGFkLTQwNzQ0N2NmYmEzYyIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6IlRhcnVuIFNpbmdoIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGFydW4uc2luZ2hAZTJlbmV0d29ya3MuY29tIiwiZ2l2ZW5fbmFtZSI6IlRhcnVuIiwiZmFtaWx5X25hbWUiOiJTaW5naCIsImVtYWlsIjoidGFydW4uc2luZ2hAZTJlbmV0d29ya3MuY29tIn0.hWH_2D8-tbBDxo7aOj08agHmkFduTECWsuHB852xBx9GES94pO73O7uMEa_vcOCEH_RRbs9124IiwEJvwZNgW0x9H7-6q2Pjip2fFj1kvXra1Ny4Lc_bHsIJxl_JWncZJlcfRSNQX15Bff_mFN8xkd7Kcys0Cr91s9Q53YKPNh4\r"
             expect "Input name of alias you want to add :"
             send "e2ecreds\r"
             interact'
