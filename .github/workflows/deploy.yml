@@ -109,5 +109,7 @@ jobs:
 
     - name: Deploy
       run: |
+        pwd
         cd ..
+        pwd
         e2e_cli faas --name="e2e-function-py-f1" --lang="python" redeploy 
