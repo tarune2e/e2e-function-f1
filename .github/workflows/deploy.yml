@@ -49,8 +49,6 @@ jobs:
             send "e2ecreds\r"
             expect eof
         '
-
-
     - name: Default Alias Set
       run: |
         echo "Starting Interactive Command alias"
@@ -64,54 +62,13 @@ jobs:
             send "y\r"
             expect eof
         '
-    # - name: Capture Faas list Output
-    #   id: capture_output_faas_list
-    #   run: |
-    #     echo "Running a command..."
-    #     # Replace 'your_command' with the actual command you want to run
-    #     output=$(e2e_cli faas list)
-    #     echo "::set-output name=command_output::$output"
-    
-    # - name: Capture Alias Output
-    #   id: capture_output_alias_view
-    #   run: |
-    #     echo "Running a command..."
-    #     # Replace 'your_command' with the actual command you want to run
-    #     output=$(e2e_cli alias view)
-    #     echo "::set-output name=command_output::$output"
-
-    - name: Capture Faas list Output
-      id: capture_output_faas_list
-      run: |
-        echo "Running a faas list command..."
-        e2e_cli faas list
-    
     - name: Capture Alias Output
       id: capture_output_alias_view
       run: |
         echo "Running a alias view command..."
         e2e_cli alias view
-    
-    # - name: List changed folders
-    #   run: |
-    #     export CHANGED_FOLDERS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} \
-    #     | cut -d/ -f1 \
-    #     | sort \
-    #     | uniq)
-    #     echo "::set-env name=CHANGED_FOLDERS::$CHANGED_FOLDERS"
-      
-    # - name: Loop over changed folders
-    #   run: |
-    #     for folder in $CHANGED_FOLDERS; do
-    #       echo "Processing folder: $folder"
-    #       e2e_cli faas deploy --name
-    #     done
 
     - name: Deploy
       run: |
-        pwd
-        ls
         cd ..
-        pwd
-        ls
         e2e_cli faas --name="e2e-function-py-f1" --lang="python" redeploy 
