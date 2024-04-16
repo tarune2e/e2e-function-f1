@@ -43,7 +43,7 @@ jobs:
 
     - name: Default Alias Set
       run: |
-      echo "Starting Interactive Command"
+        echo "Starting Interactive Command"
         # Replace 'your_command_let' with the actual command that requires input
         # You may need to adjust this command to match your specific use case
         expect -c '
