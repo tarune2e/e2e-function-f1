@@ -18,8 +18,8 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install Python dependencies
       run: |
-        rm Pipfile
         python -m pip install --upgrade pipenv
+        rm Pipfile
         pipenv sync --dev
 
     - name: Install e2e CLI
