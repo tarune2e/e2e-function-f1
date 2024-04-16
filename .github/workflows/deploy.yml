@@ -13,16 +13,19 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install Python and pip
+    - name: Install dependencies
+      run: sudo apt-get -y ...stuff...
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install Python dependencies
       run: |
-        sudo apt update
-        sudo apt install python3 python3-pip -y
-        sudo apt-get install -y expect
+        python -m pip install --upgrade pipenv
+        pipenv sync --dev
 
     - name: Install e2e CLI
       run: |
-        cd /home/runner/
-        python -m pip install --upgrade pip
         pip install e2e-cli
     
     - name: Check api and auth token
@@ -36,7 +39,6 @@ jobs:
         AUTHTOKEN: ${{ secrets.E2E_AUTH_TOKEN }}
       run: |
         echo "Starting Interactive Command"
-        cd /home/runner/
         # Replace 'your_command_let' with the actual command that requires input
         # You may need to adjust this command to match your specific use case
         expect -c '
@@ -52,7 +54,6 @@ jobs:
     - name: Default Alias Set
       run: |
         echo "Starting Interactive Command alias"
-        cd /home/runner/
         # Replace 'your_command_let' with the actual command that requires input
         # You may need to adjust this command to match your specific use case
         expect -c '
@@ -81,14 +82,12 @@ jobs:
     - name: Capture Faas list Output
       id: capture_output_faas_list
       run: |
-        cd /home/runner/
         echo "Running a faas list command..."
         e2e_cli faas list
     
     - name: Capture Alias Output
       id: capture_output_alias_view
       run: |
-        cd /home/runner/
         echo "Running a alias view command..."
         e2e_cli alias view
     
