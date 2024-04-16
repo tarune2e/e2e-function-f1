@@ -23,6 +23,11 @@ jobs:
       run: |
         pip3 install e2e-cli
     
+    - name: Check api and auth token
+      run: |
+        echo secrets.E2E_API_KEY 
+        echo secrets.E2E_AUTH_TOKEN
+        
     - name: Execute Interactive Command
       env:
         APIKEY: ${{ secrets.E2E_API_KEY }}
