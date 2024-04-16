@@ -57,7 +57,6 @@ jobs:
             expect "Input name of alias you want to add :"
             send "e2ecreds\r"
             expect eof
-            exit [wait]
         '
 
 
@@ -73,7 +72,6 @@ jobs:
             expect "are you sure you want to proceed (y/n):"
             send "y\r"
             expect eof
-            exit [wait]
         '
     # - name: Capture Faas list Output
     #   id: capture_output_faas_list
@@ -119,4 +117,6 @@ jobs:
     #     done
 
     - name: Deploy
-      run: e2e_cli faas --name="e2e-function-py-f1" --lang="python" redeploy 
+      run: |
+        cd ..
+        e2e_cli faas --name="e2e-function-py-f1" --lang="python" redeploy 
