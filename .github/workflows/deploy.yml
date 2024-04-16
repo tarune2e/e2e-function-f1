@@ -19,8 +19,6 @@ jobs:
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pipenv
-        rm Pipfile
-        pipenv sync --dev
 
     - name: Install e2e CLI
       run: |
