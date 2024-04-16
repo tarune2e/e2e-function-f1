@@ -19,6 +19,7 @@ jobs:
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
+        sudo apt-get install -y expect
   
 
     - name: Install e2e CLI
